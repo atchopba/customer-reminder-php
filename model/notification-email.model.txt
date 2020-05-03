@@ -1,0 +1,64 @@
+SAS OVH - https://www.ovh.com/
+2 rue Kellermann
+BP 80157
+59100 Roubaix
+
+
+
+Le #date_courante#,
+
+Cher(e) Client(e), #nom_client#,
+
+Nous vous informons sur l'évolution de vos produits chez OVH
+et vous envoyons un rappel  28, 14, 7, 3 et 1 jours
+avant leur expiration.
+
+
+
+Pour renouveler tous ces services à la carte, suivez ce lien:
+
+  https://www.ovh.com/fr/cgi-bin/order/renew.cgi?id=IDK6rcnacCvpxGyKC1S7zoWGluhzpTKQSD&xtor=CS3-25-%5Breminder-renew%5D
+
+Aucun mot de passe ne vous sera demandé et vous pourrez créer
+votre bon de commande immédiatement.
+
+
+
+Voici la liste de vos services concernés:
+
+Services expirant aujourd'hui:
+#nom_domaine#:
+        Hébergement mutualisé / #date_expiration#
+
+
+-----------------------------------------
+
+
+
+
+
+
+- Si vous préférez modifier les caractéristiques de vos services, vous pouvez utiliser votre interface de gestion:
+
+   https://www.ovh.com/manager/
+
+Depuis cette même interface de gestion vous pouvez activer l'option de renouvellement automatique depuis la section "Facturation" et
+ensuite "Mes services".
+
+Pour accéder à cette page, munissez-vous de votre identifiant client ovh et de votre mot de passe.
+
+
+
+*Attention* : Certains registrars, comme par exemple Domain Registry of America, utilisent des pratiques tendancieuses
+vous conviant à payer une facture afin de renouveler votre domaine. Ces factures vous engagent en réalité à transférer
+le domaine auprès de leurs services. En cas de doute ne tenez pas compte de ces courriers et utilisez notre système de
+renouvellement.
+
+
+Nous restons à votre disposition pour tout renseignement complémentaire.
+
+
+Cordialement,
+
+Votre Service client OVH
+Pour nous contacter : https://www.ovh.com/fr/support/
