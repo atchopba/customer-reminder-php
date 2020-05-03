@@ -33,7 +33,6 @@ function add_2_log($message) {
  * @return array
  */
 function get_customer_2_notify($query) {
-	echo "$query<br/>";
 	$mysqli = new mysqli(__host__, __user__, __pwd__, __db__);
 	/* check connection */
 	if (mysqli_connect_errno()) {
@@ -123,7 +122,6 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 		$notif = str_replace("#date_expiration#", $c["date_expiration"], $notif);
 		$notif = str_replace("#nom_domaine#", $c["nom_domaine"], $notif);
 		// 
-		echo "$notif<br/>";
 		$email_sent = "non";
 		// envoie du mail
 		if ($c["email_contact"] != null && $c["email_contact"] != "") {
@@ -147,8 +145,7 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 
 // selection des clients de 4 semaines
 $query = "SELECT * FROM portolio WHERE DATEDIFF(CURRENT_DATE, date_expiration) = 28 AND payement_effectue <> 'oui'";
-$arr_customers = get_customer_2_notify($query);
-var_dump($arr_customers); 
+$arr_customers = get_customer_2_notify($query); 
 notify_customers($notif_email_model, $notif_sms_model, $arr_customers);
 
 // selection des clients de 3 semaines
