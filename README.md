@@ -17,7 +17,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-
+If you want to use the automation function, you need a Linux OS.
 
 ### Installation
 
+* Put the right parameters in the notify-task.sh file.
+
+* Put the right parameters in the notify-cron.sh file
+
+* Put notify-cron.sh in /etc/cron.d/  
+
+* Check if the PHP is able to send mail.
+
+And check if notifications have been sent.
