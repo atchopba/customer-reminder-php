@@ -144,32 +144,32 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 }
 
 // selection des clients de 4 semaines
-$query = "SELECT * FROM portolio WHERE DATEDIFF(CURRENT_DATE, date_expiration) = 28 AND payement_effectue <> 'oui'";
+$query = "SELECT * FROM portolio WHERE DATEDIFF(date_expiration, CURRENT_DATE) = 28 AND payement_effectue <> 'oui'";
 $arr_customers = get_customer_2_notify($query); 
 notify_customers($notif_email_model, $notif_sms_model, $arr_customers);
 
 // selection des clients de 3 semaines
-$query = "SELECT * FROM portolio WHERE DATEDIFF(CURRENT_DATE, date_expiration) = 21 AND payement_effectue <> 'oui'";
+$query = "SELECT * FROM portolio WHERE DATEDIFF(date_expiration, CURRENT_DATE) = 21 AND payement_effectue <> 'oui'";
 $arr_customers = get_customer_2_notify($query);
 notify_customers($notif_email_model, $notif_sms_model, $arr_customers);
 
 // selection des clients de 2 semaines
-$query = "SELECT * FROM portolio WHERE DATEDIFF(CURRENT_DATE, date_expiration) = 14 AND payement_effectue <> 'oui'";
+$query = "SELECT * FROM portolio WHERE DATEDIFF(date_expiration, CURRENT_DATE) = 14 AND payement_effectue <> 'oui'";
 $arr_customers = get_customer_2_notify($query);
 notify_customers($notif_email_model, $notif_sms_model, $arr_customers);
 
 // selection des clients de 1 semaines
-$query = "SELECT * FROM portolio WHERE DATEDIFF(CURRENT_DATE, date_expiration) = 7 AND payement_effectue <> 'oui'";
+$query = "SELECT * FROM portolio WHERE DATEDIFF(date_expiration, CURRENT_DATE) = 7 AND payement_effectue <> 'oui'";
 $arr_customers = get_customer_2_notify($query);
 notify_customers($notif_email_model, $notif_sms_model, $arr_customers);
 
 // selection des clients de 3 jours
-$query = "SELECT * FROM portolio WHERE DATEDIFF(CURRENT_DATE, date_expiration) = 3 AND payement_effectue <> 'oui'";
+$query = "SELECT * FROM portolio WHERE DATEDIFF(date_expiration, CURRENT_DATE) = 3 AND payement_effectue <> 'oui'";
 $arr_customers = get_customer_2_notify($query);
 notify_customers($notif_email_model, $notif_sms_model, $arr_customers);
 
 // selection des clients de 1 jour
-$query = "SELECT * FROM portolio WHERE DATEDIFF(CURRENT_DATE, date_expiration) = 1 AND payement_effectue <> 'oui'";
+$query = "SELECT * FROM portolio WHERE DATEDIFF(date_expiration, CURRENT_DATE) = 1 AND payement_effectue <> 'oui'";
 $arr_customers = get_customer_2_notify($query);
 notify_customers($notif_email_model, $notif_sms_model, $arr_customers);
 
