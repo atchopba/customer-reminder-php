@@ -25,7 +25,7 @@ function get_current_date_time() {
  * @param message 	Message
  */
 function add_2_log($message) {
-	file_put_contents(__log_file__, get_current_date_time()." 	". $message. "\n", FILE_APPEND);
+	file_put_contents(__log_file__, get_current_date_time()." 	". $message. "\n", FILE_APPEND | LOCK_EX); // en appliquant un file lock (Php ver 5.1 en montant) on s'assure de l'exclusivité du fichier pendant les file open.
 }
 
 /**
