@@ -121,6 +121,7 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 		$notif = str_replace("#nom_client#", $c["nom_client"], $notif);
 		$notif = str_replace("#date_expiration#", $c["date_expiration"], $notif);
 		$notif = str_replace("#nom_domaine#", $c["nom_domaine"], $notif);
+		$notif = str_replace("#redevance#", $c["redevance"], $notif);
 		// 
 		$email_sent = "non";
 		// envoie du mail

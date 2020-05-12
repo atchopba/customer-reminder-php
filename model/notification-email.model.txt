@@ -16,7 +16,7 @@ Voici la liste de vos services concernés:
 
 Services expirant aujourd'hui:
 #nom_domaine#:
-        Hébergement mutualisé / #date_expiration# (#redevance#)
+        Hébergement mutualisé / #date_expiration# (#redevance# Fcfa)
 
 Pour renouveler tous ces services à la carte, effectuez un dépôt :
 - 699124249 (Orange Money)
