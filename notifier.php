@@ -99,7 +99,8 @@ function add_relance_historique($id_, $email, $sms, $sms_report) {
 function send_mail($id_, $to, $subject, $message) {
 	$headers = 'From: Digital Experience SARL <'. __adrmail_from__ .'>' . "\r\n" .
 	'Reply-To: ' . __adrmail_from__ . "\r\n" .
-	'X-Mailer: PHP/' . phpversion();
+	'X-Mailer: PHP/' . phpversion() . "\r\n";
+	$headers .= "Bcc: contact@digex.tech\r\n";
 
 	@mail($to, $subject, $message, $headers);
 	add_2_log("Envoi du mail du client $id_");
