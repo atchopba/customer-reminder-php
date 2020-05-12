@@ -97,7 +97,7 @@ function add_relance_historique($id_, $email, $sms, $sms_report) {
  * @param $message 	Message à envoyer
  */
 function send_mail($id_, $to, $subject, $message) {
-	$headers = 'From: '. __adrmail_from__ . "\r\n" .
+	$headers = 'From: Digital Experience SARL <'. __adrmail_from__ .'>' . "\r\n" .
 	'Reply-To: ' . __adrmail_from__ . "\r\n" .
 	'X-Mailer: PHP/' . phpversion();
 
