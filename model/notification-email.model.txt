@@ -1,4 +1,4 @@
-Digital Experience SARL - https://www.digex.tech/
+Digital Experience SARL - http://www.digex.tech/
 Rue Foch, Akwa Immeuble SCI, 3ème étage
 BP 10041 Douala, 
 Cameroun
@@ -40,4 +40,4 @@ Nous restons à votre disposition pour tout renseignement complémentaire.
 Cordialement,
 
 Votre Service client DigEx
-Pour nous contacter : https://www.digex.tech/fr/support/
+Pour nous contacter : http://www.digex.tech/
