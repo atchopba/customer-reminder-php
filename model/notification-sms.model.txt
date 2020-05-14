@@ -1,0 +1,4 @@
+Cher(e) #nom_client#, nous vous informons qu'un de vos produits chez nous arrive bientot a expiration.
+Il s'agit de votre domaine ainsi que le service qu'il heberge : #nom_domaine#.
+Souhaitez-vous le renouveller ?
+Appelez immediatement le 666404440.
