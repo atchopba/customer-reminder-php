@@ -97,13 +97,58 @@ function add_relance_historique($id_, $email, $sms, $sms_report) {
  * @param $message 	Message à envoyer
  */
 function send_mail($id_, $to, $subject, $message) {
-	$headers = 'From: Digital Experience SARL <'. __adrmail_from__ .'>' . "\r\n" .
+	$headers = 'MIME-Version: 1.0' . "\r\n";
+	$headers .= 'Content-type: text/plain; charset=UTF-8' . "\r\n";
+	$headers .= 'From: Digital Experience SARL <'. __adrmail_from__ .'>' . "\r\n" .
 	'Reply-To: ' . __adrmail_from__ . "\r\n" .
 	'X-Mailer: PHP/' . phpversion() . "\r\n";
 	$headers .= "Bcc: contact@digex.tech\r\n";
 
 	@mail($to, $subject, $message, $headers);
 	add_2_log("Envoi du mail du client $id_");
+}
+
+/**
+ * Envoi d'un SMS
+ * @param $id_
+ * @param $to 		Destinataire du SMS
+ * @param $message 	Message à envoyer
+ */
+function send_sms($id_, $to, $message) {
+	
+	$live_url = "http://rslr.connectbind.com/bulksms/bulksms?username=dms-brc2018&password=30121984&type=0&dlr=1&destination=237" . $to . "&source=DIGEX&message=" . urlencode($message);
+	
+	$curl = curl_init();
+	curl_setopt_array($curl, array(
+		CURLOPT_URL => "$live_url",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 30,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "GET",
+		CURLOPT_HTTPHEADER => array(
+			"Postman-Token: 09ba239d-fcb7-4755-8032-7ff4f768147f",
+			"cache-control: no-cache"
+		),
+	));
+	
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+
+	curl_close($curl);
+
+	if ($err) {
+		//echo "cURL Error #:" . $err;
+		add_2_log("Envoi du sms du client $id_ erreur : $err");
+	} else {
+		//echo $response;
+		add_2_log("Envoi du sms du client $id_ resultat : $response");
+	}
+	
+	
+	
+	return $response;
 }
 
 /**
@@ -117,13 +162,18 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 	for ($i=0; $i<count($customers); $i++) {
 
 		$c = $customers[$i];
-		// paramétrage de la notification
+		// paramétrage de la notification email
 		$notif = str_replace("#date_courante#", get_current_date_time(), $notif_email_model);
 		$notif = str_replace("#nom_client#", $c["nom_client"], $notif);
 		$notif = str_replace("#date_expiration#", $c["date_expiration"], $notif);
 		$notif = str_replace("#nom_domaine#", $c["nom_domaine"], $notif);
 		$notif = str_replace("#redevance#", $c["redevance"], $notif);
-		// 
+		
+		// paramétrage de la notification sms
+		$notif_sms = str_replace("#nom_client#", $c["nom_client"], $notif_sms_model);
+		$notif_sms = str_replace("#nom_domaine#", $c["nom_domaine"], $notif_sms);
+		//var_dump($notif_sms);
+				
 		$email_sent = "non";
 		// envoie du mail
 		if ($c["email_contact"] != null && $c["email_contact"] != "") {
@@ -132,14 +182,18 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 			// ajout dans la bdd
 			add_relance_historique($c["id"], $email_sent, "non", null);
 		}
+		
+		$sms_sent = "non";
 		// envoie du sms
 		if ($c["sms_relance"] == "oui" && $c["numero_tel"] != null && $c["numero_tel"] != "") {
 			// ===> sms envoyé <===
 			// ===> utiliser $notif_sms_model pour envoyer le sms
 			$id_ = $c["id"];
-			add_2_log("Envoi du sms du client $id_");
+			$dest = $c["numero_tel"];
+			$retour = send_sms($id_, $dest, $notif_sms);
+			$sms_sent = "oui";
 			// ajout dans la bdd
-			add_relance_historique($c["id"], $email_sent, "oui", null);
+			add_relance_historique($c["id"], $sms_sent, "oui", $retour);
 		}
 		
 	}
