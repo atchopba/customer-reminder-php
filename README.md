@@ -21,6 +21,8 @@ If you want to use the automation function, you need a Linux OS.
 
 ### Installation
 
+* Give 755 to logs folder.
+
 * Put the right parameters in the notify-task.sh file.
 
 * Put the right parameters in the notify-cron.sh file
