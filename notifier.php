@@ -172,8 +172,7 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 		// paramétrage de la notification sms
 		$notif_sms = str_replace("#nom_client#", $c["nom_client"], $notif_sms_model);
 		$notif_sms = str_replace("#nom_domaine#", $c["nom_domaine"], $notif_sms);
-		//var_dump($notif_sms);
-				
+						
 		$email_sent = "non";
 		// envoie du mail
 		if ($c["email_contact"] != null && $c["email_contact"] != "") {
@@ -193,7 +192,7 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 			$retour = send_sms($id_, $dest, $notif_sms);
 			$sms_sent = "oui";
 			// ajout dans la bdd
-			add_relance_historique($c["id"], $sms_sent, "oui", $retour);
+			add_relance_historique($c["id"], "non", $sms_sent, $retour);
 		}
 		
 	}
