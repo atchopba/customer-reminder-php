@@ -1,0 +1,43 @@
+Digital Experience SARL - http://www.digex.tech/
+Rue Foch, Akwa Immeuble SCI, 3ème étage
+BP 10041 Douala, 
+Cameroun
+
+
+Le #date_courante#,
+
+Cher(e) Client(e), #nom_client#,
+
+Nous vous informons sur l'évolution de vos produits chez Digital Experience
+et vous envoyons un rappel  28, 14, 7, 3 et 1 jours
+avant leur expiration.
+
+Voici la liste de vos services concernés:
+
+Services expirant aujourd'hui:
+#nom_domaine#:
+        Hébergement mutualisé / #date_expiration# (#redevance# Fcfa)
+
+Pour renouveler tous ces services à la carte, effectuez un dépôt :
+- 699124249 (Orange Money)
+- 676270034 (Mobile Money)
+
+-----------------------------------------
+
+Si vous préférez modifier les caractéristiques de vos services, vous pouvez contacter votre service client au numéro suivant :
+
+   +237 6 66 40 44 40
+
+*Attention* : Certains registrars, comme par exemple Domain Registry of America, utilisent des pratiques tendancieuses
+vous conviant à payer une facture afin de renouveler votre domaine. Ces factures vous engagent en réalité à transférer
+le domaine auprès de leurs services. En cas de doute ne tenez pas compte de ces courriers et utilisez notre système de
+renouvellement.
+
+
+Nous restons à votre disposition pour tout renseignement complémentaire.
+
+
+Cordialement,
+
+Votre Service client DigEx
+Pour nous contacter : http://www.digex.tech/

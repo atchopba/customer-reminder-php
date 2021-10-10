@@ -1,7 +1,8 @@
-<?php
+﻿<?php
 include_once("config.php");
 
-$notif_email_model = file_get_contents("model/notification-email.model.txt");
+// Le pb venait d'ici. L'inclusion ne se fait pas correctement bien vouloir lire le lien suivant pour plus de détail : https://theseosystem.com/file_get_contents-cron/
+$notif_email_model = file_get_contents(dirname(__FILE__) . DIRECTORY_SEPARATOR . "notification-email.model.txt"); //  Modifié le 10/10/2021
 $notif_sms_model = file_get_contents("model/notification-sms.model.txt");
 
 /**
@@ -99,12 +100,13 @@ function add_relance_historique($id_, $email, $sms, $sms_report) {
 function send_mail($id_, $to, $subject, $message) {
 	$headers = 'MIME-Version: 1.0' . "\r\n";
 	$headers .= 'Content-type: text/plain; charset=UTF-8' . "\r\n";
-	$headers .= 'From: Digital Experience SARL <'. __adrmail_from__ .'>' . "\r\n" .
-	'Reply-To: ' . __adrmail_from__ . "\r\n" .
+	$headers .= 'From: Digital Experience SARL <contact@digex.tech>' . "\r\n" .
+	'Reply-To: contact@digex.tech' . "\r\n" .
 	'X-Mailer: PHP/' . phpversion() . "\r\n";
-	$headers .= "Bcc: contact@digex.tech\r\n";
+	$headers .= "Bcc: contact@digex.tech\r\n";	
 
 	@mail($to, $subject, $message, $headers);
+	
 	add_2_log("Envoi du mail du client $id_");
 }
 
@@ -182,6 +184,9 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 			add_relance_historique($c["id"], $email_sent, "non", null);
 		}
 		
+		// Mise à jour par Patient le 10/10/2021 -- On va supprimer les notifications SMS afin de se concentrer sur les emails uniquement.
+		// Un 2ème cron sera fait séparémment pour regler le PB des SMS afin que les 2 ne soit pas sur le même script
+		/*
 		$sms_sent = "non";
 		// envoie du sms
 		if ($c["sms_relance"] == "oui" && $c["numero_tel"] != null && $c["numero_tel"] != "") {
@@ -194,7 +199,7 @@ function notify_customers($notif_email_model, $notif_sms_model, $customers) {
 			// ajout dans la bdd
 			add_relance_historique($c["id"], "non", $sms_sent, $retour);
 		}
-		
+		*/
 	}
 }
 
